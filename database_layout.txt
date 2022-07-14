@@ -1,0 +1,55 @@
+{'ships':[
+    {'id': 'cl55thau617774315s68iz3fpjj',
+    'location': 'OE-BO',
+    'x': -59,
+    'y': 60,
+    'cargo': [{'good': 'FUEL', 'quantity': 40, 'totalVolume': 40}],
+    'spaceAvailable': 10,
+    'type': 'JW-MK-I',
+    'class': 'MK-I',
+    'maxCargo': 50,
+    'loadingSpeed': 25,
+    'speed': 1,
+    'manufacturer': 'Jackshaw',
+    'plating': 5,
+    'weapons': 5}
+    ]
+
+'locations':{
+    'OE':[
+        {'symbol': 'OE-PM',
+        'type': 'PLANET',
+        'name': 'Prime',
+        'x': -19,
+        'y': 3,
+        'allowsConstruction': False,
+        'traits': ['METAL_ORES', 'SOME_NATURAL_CHEMICALS']}
+        ]
+    }
+}
+
+
+FUEL
+CHEMICALS
+METALS
+DRONES
+TEXTILES
+FOOD
+CONSUMER_GOODS
+NARCOTICS
+RARE_METALS
+EXPLOSIVES
+SHIP_PARTS
+ELECTRONICS
+MACHINERY
+CONSTRUCTION_MATERIALS
+SHIP_PLATING
+NANOBOTS
+RESEARCH
+PRECISION_INSTRUMENTS
+BIOMETRIC_FIREARMS
+UNSTABLE_COMPOUNDS
+PROTEIN_SYNTHESIZERS
+FUSION_REACTORS
+ZUCO_CRYSTALS
+EXOTIC_PLASMA
