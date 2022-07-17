@@ -73,7 +73,7 @@ def get_flightplan(flightPlan_id, params={}):
   return make_request(f'{flightplan_url}/{flightPlan_id}', params=params).json()['flightPlan']
   
 def make_flightplan(ship_id, destination):
-  return make_request(f'{flightplan_url}', params={'shipId':ship_id, 'destination':destination}, type="POST").json()
+  return make_request(f'{flightplan_url}', params={'shipId':ship_id, 'destination':destination}, type="POST").json()['flightPlan']
 
 # LOANS
 def get_loans():
@@ -90,7 +90,7 @@ def get_location_data(location_id, params={}):
   return make_request(f'{location_url}/{location_id}', params=params).json()['location']
 
 def get_market_data(location_id, params={}):
-  return make_request(f'{location_url}/{location_id}/marketplace', params=params).json()
+  return make_request(f'{location_url}/{location_id}/marketplace', params=params).json()['marketplace']
 
 def get_ships(location_id, params={}):
   return make_request(f'{location_url}/{location_id}/ships', params=params).json()['ships']
@@ -129,16 +129,16 @@ def transfer_ship_cargo(from_ship_id, to_ship_id, good, quantity):
 
 #STRUCTURES
 def get_structure_data(structure_id):
-  return make_request(f'{struct_url}/{structure_id}')
+  return make_request(f'{struct_url}/{structure_id}')['structure']
 
 def get_my_structure_data(structure_id):
-  return make_request(f'{my_struct_url}/{structure_id}')
+  return make_request(f'{my_struct_url}/{structure_id}')['structure']
 
 def get_my_structures():
-  return make_request(f'{my_struct_url}')
+  return make_request(f'{my_struct_url}')['structures']
 
 def create_structure(location_id, structure_type):
-  return make_request(f'{my_struct_url}', params = {'location': location_id, 'type': structure_type}).json()
+  return make_request(f'{my_struct_url}', params = {'location': location_id, 'type': structure_type}).json()['structure']
 
 def deposit_goods_to_owned_structure(structure_id, ship_id, good, quantity):
   return make_request(f'{my_struct_url}/deposit', params = {'structureId': structure_id, 'shipId': ship_id, 'good': good, 'quantity': quantity}).json()
@@ -163,20 +163,20 @@ def get_system_locations(system_id, params={}):
   return make_request(f'{system_url}/{system_id}/locations', params=params).json()['locations']
 
 def get_system_data(system_id, params={}):
-  return make_request(f'{system_url}/{system_id}', params = params).json()
+  return make_request(f'{system_url}/{system_id}', params = params).json()['system']
 
 #TYPES
 def get_available_goods(params={}):
-  return make_request(f'{types_url}/goods', params=params).json()
+  return make_request(f'{types_url}/goods', params=params).json()['goods']
 
 def get_available_loans(params={}):
-  return make_request(f'{types_url}/loans').json()
+  return make_request(f'{types_url}/loans').json()['loans']
 
 def get_available_structures(params={}):
-  return make_request(f'{types_url}/structures').json()
+  return make_request(f'{types_url}/structures').json()['structures']
 
 def get_available_ships(params={}):
-  return make_request(f'{types_url}/ships').json()
+  return make_request(f'{types_url}/ships').json()['ships']
 
 #USERS
 def claim_username(username):
@@ -185,7 +185,7 @@ def claim_username(username):
   return print()
 
 def warp_jump(ship_id):
-  return make_request(f'https://api.spacetraders.io/my/warp-jumps', params={'shipId':ship_id}).json()
+  return make_request(f'https://api.spacetraders.io/my/warp-jumps', params={'shipId':ship_id}).json()['flightPlan']
 
 
 ## ADDITIONAL HELPER FUNCTIONS
@@ -207,6 +207,12 @@ def distance_between(xy1, xy2):
   x = xy1[0]-xy2[0]
   y = xy1[1]-xy2[1]
   return math.hypot(x, y)
+
+def ships_present(location):
+  for ship in get_ships():
+    if ship['location'] == location:
+      return True
+  return False
 
 #Classes:
 
