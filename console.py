@@ -1,6 +1,8 @@
 from src.display import *
 from src.dalle import *
-import os
-os.environ["REPLICATE_API_TOKEN"]="5ded05b00c15a89b3112489661b919975e59e8ae"
+from src.api import *
+
 for location in get_system_locations('OE'):
-    print(descriptive_location_name(location['symbol']))
+    generate_location_image(location['symbol'])
+for ship in get_available_ships():
+    generate_ship_image(ship['type'])
