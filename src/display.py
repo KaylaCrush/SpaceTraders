@@ -1,4 +1,4 @@
-from api import *
+from src.api import *
 import tkinter as tk
 from tkinter import ttk
 
@@ -33,6 +33,14 @@ class ShipsWindow(Window):
         self.myData = get_ships()
         self.title('Ships')
         self.resizable(0,0)
+
+class PlanetWindow(Window):
+    def __init__(self,parent, planet_id):
+        super().__init__(parent)
+        self.myData = get_system_data(planet_id)
+        self.title(planet_id)
+        self.resizable(0,0)
+
 
 
 class RootMenu(tk.Tk):
