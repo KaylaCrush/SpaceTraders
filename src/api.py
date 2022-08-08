@@ -19,20 +19,29 @@ sell_url      = f'{my_url}/sell-orders'
 flightplan_url= f'{my_url}/flight-plans'
 my_struct_url = f'{my_url}/structures'
 
-## =====API CALLS===== ##
-def make_request(url, params={}, type='GET'):
-  time.sleep(1) # Delay to avoid disconnect for spamming
+
+
+# ## =====API CALLS===== ##
+def make_request(url, params={}, req_type='GET', delay=0.0):
+  time.sleep(delay)
   headers = {"Authorization": f"Bearer {TOKEN}"}
-  if type == 'GET':
-    response = requests.get(url, headers=headers, params=params)
-  elif type == 'POST':
-    response = requests.post(url, headers=headers, params=params)
-  elif type == 'PUT':
-    response = requests.put(url, headers=headers, params=params)
-  elif type == 'DELETE':
-    response = requests.delete(url, headers=headers, params=params)
+  
+  match req_type:
+    case 'GET':
+      response = requests.get(url, headers=headers, params=params)
+    case 'POST':
+      response = requests.post(url, headers=headers, params=params)
+    case 'PUT':
+      response = requests.put(url, headers=headers, params=params)
+    case 'DELETE':
+      response = requests.delete(url, headers=headers, params=params)
+  
+  if response.status_code == 429: # Too Many Requests
+    return make_request(url, params, req_type, delay+.01)
+    
   response.raise_for_status() # Errors out if a request is unsuccessful
   return response
+
 
 ## these functions cover (almost?) all the API requests at https://api.spacetraders.io/
 
@@ -48,17 +57,17 @@ def get_flightplan(flightPlan_id, params={}):
   return make_request(f'{flightplan_url}/{flightPlan_id}', params=params).json()['flightPlan']
   
 def make_flightplan(ship_id, destination):
-  return make_request(f'{flightplan_url}', params={'shipId':ship_id, 'destination':destination}, type="POST").json()['flightPlan']
+  return make_request(f'{flightplan_url}', params={'shipId':ship_id, 'destination':destination}, req_type="POST").json()['flightPlan']
 
 # LOANS
 def get_loans():
   return make_request(url= f'{loans_url}').json()['loans']
 
 def pay_loan(loan_id):
-  return make_request(f'{loans_url}/{loan_id}', type="PUT").json()
+  return make_request(f'{loans_url}/{loan_id}', req_type="PUT").json()
 
 def take_loan(loan_type):
-  return make_request(f'{loans_url}', params={'type':loan_type}, type="POST").json()
+  return make_request(f'{loans_url}', params={'type':loan_type}, req_type="POST").json()
 
 # LOCATIONS
 def get_location_data(location_id, params={}):
@@ -75,17 +84,17 @@ def get_structures(location_id, params={}):
 
 # COMMERCE
 def purchace_goods(ship_id, good, quantity):
-  return make_request(f'{purchace_url}', params={'shipId':ship_id,'quantity':quantity,'good':good}, type='POST').json()
+  return make_request(f'{purchace_url}', params={'shipId':ship_id,'quantity':quantity,'good':good}, req_type='POST').json()
 
 def sell_goods(ship_id, good, quantity):
-  return make_request(f'{sell_url}', param={'shipId':ship_id,'quantity':quantity,'good':good}, type='POST').json()
+  return make_request(f'{sell_url}', param={'shipId':ship_id,'quantity':quantity,'good':good}, req_type='POST').json()
 
 def fuel_ship(ship_id,fuel_amount): #
   return purchace_goods(f'{ship_id}', 'FUEL', fuel_amount).json()
 
 # SHIPS
 def buy_ship(location, type):
-  return make_request(f'{myShips_url}',params = {'location': location, 'type': type}, type = "POST").json()
+  return make_request(f'{myShips_url}',params = {'location': location, 'type': type}, req_type = "POST").json()
 
 def get_ships(params={}):
   return make_request(myShips_url, params=params).json()['ships']
@@ -94,23 +103,23 @@ def get_ship_data(ship_id, params={}):
   return make_request(f'{myShips_url}/{ship_id}', params=params).json()['ship']
 
 def jettison_ship_cargo(ship_id, good, quantity):
-  return make_request(f'{myShips_url}/{ship_id}/jettison', params = {'shipId':ship_id, 'good':good, 'quantity':quantity}, type="POST").json()
+  return make_request(f'{myShips_url}/{ship_id}/jettison', params = {'shipId':ship_id, 'good':good, 'quantity':quantity}, req_type="POST").json()
 
 def scrap_ship(ship_id):
-  return make_request(f'{myShips_url}/{ship_id}', type = "DELETE").json()
+  return make_request(f'{myShips_url}/{ship_id}', req_type = "DELETE").json()
 
 def transfer_ship_cargo(from_ship_id, to_ship_id, good, quantity):
-  return make_request(f'{myShips_url}/{from_ship_id}', params = {'toShipId':to_ship_id, 'good': good,'quantity':quantity}, type ="POST").json()
+  return make_request(f'{myShips_url}/{from_ship_id}', params = {'toShipId':to_ship_id, 'good': good,'quantity':quantity}, req_type ="POST").json()
 
 #STRUCTURES
 def get_structure_data(structure_id):
-  return make_request(f'{struct_url}/{structure_id}')['structure']
+  return make_request(f'{struct_url}/{structure_id}').json()['structure']
 
 def get_my_structure_data(structure_id):
-  return make_request(f'{my_struct_url}/{structure_id}')['structure']
+  return make_request(f'{my_struct_url}/{structure_id}').json()['structure']
 
 def get_my_structures():
-  return make_request(f'{my_struct_url}')['structures']
+  return make_request(f'{my_struct_url}').json()['structures']
 
 def create_structure(location_id, structure_type):
   return make_request(f'{my_struct_url}', params = {'location': location_id, 'type': structure_type}).json()['structure']

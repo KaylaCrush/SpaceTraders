@@ -1,6 +1,5 @@
-from src.display import *
-from src.dalle import *
 from src.api import *
-breakpoint()
-window=RootMenu()
-window.mainloop()
+from src.store import *
+from src.classes import *
+
+print(get_ship_data(get_ships()[0]['id']).items())

@@ -1,5 +1,5 @@
 from src.api import *
-from test.test_data import *
+from tests.test_data import *
 
 def test_make_request():
   url = 'https://api.spacetraders.io/game/status'
