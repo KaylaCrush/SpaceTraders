@@ -2,13 +2,13 @@ from src.classes import *
 from tests.test_data import *
 
 def test_ship_from_api():
-    assert Ship(sample_ship['id']).id == sample_ship['id']
+    assert Ship(ship_id=sample_ship['id']).id == sample_ship['id']
 
 def test_ship_from_file():
     assert Ship(data=sample_ship).id == sample_ship['id']
 
 def test_location_from_api():
-    assert Location(sample_location['symbol']).symbol == sample_location['symbol']
+    assert Location(location_id=sample_location['symbol']).symbol == sample_location['symbol']
 
 def test_location_from_file():
     assert Location(data=sample_location).symbol == sample_location['symbol']
