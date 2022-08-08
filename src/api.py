@@ -74,7 +74,7 @@ def get_location_data(location_id, params={}):
   return make_request(f'{location_url}/{location_id}', params=params).json()['location']
 
 def get_market_data(location_id, params={}):
-  return make_request(f'{location_url}/{location_id}/marketplace', params=params).json()['marketplace']
+  return make_request(f'{location_url}/{location_id}/marketplace', params=params).json()
 
 def get_ships(location_id, params={}):
   return make_request(f'{location_url}/{location_id}/ships', params=params).json()['ships']

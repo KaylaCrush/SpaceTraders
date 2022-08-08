@@ -34,6 +34,7 @@ class Location(Generic):
     def __init__(self, location_id=None, data = None):
         super().__init__(first_id = location_id, data=data, data_function=get_location_data)
 
+
 class System(Generic):
     def __init__(self, system_id=None, data = None):
         super().__init__(first_id = system_id, data=data, data_function=get_system_data)
@@ -46,21 +47,11 @@ class Structure(Generic):
 
 class Market(Generic):
     def __init__(self, location_id = None, data = None):
-        if data is not None:
-            self.__dict__.update(data)
-        elif location_id is not None:
-            self.goods = get_market_data(location_id)
-            self.location_id = location_id
-            self.date = str(datetime.datetime.now())
+        super().__init__(first_id = location_id, data = data, data_function=get_market_data)
+        self.location_id = location_id
+        self.date = str(datetime.datetime.now())
 
-        else:
-            raise Exception('No location_id or data provided')
 
-# class FlightPlan:
-#     def __init__(self, ship_id = None, destination_id = None, data = None):
-#         if data is not None:
-#             self.__dict__.update(data)
-#         elif ship_id is not None and destination_id is not None:
-#             self.__dict__.update(make_flightplan(ship_id, destination_id))
-#         else:
-#             raise Exception('No location_id and destination_id or data provided')
+class FlightPlan(Generic):
+    def __init__(self, ship_id = None, destination = None, data = None):
+        super().__init__(first_id = ship_id, second_id = destination, data = data, data_function=make_flightplan)
