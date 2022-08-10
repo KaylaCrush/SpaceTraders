@@ -12,7 +12,12 @@ class Store:
         self.locations = []
         self.markets = []
         self.structures = []
+
         self.flightplans = []
+        self.loans = []
+        self.transactions = []
+        self.types = []
+        self.user = {}
 
         if load_from_file and exists('data/systems.json'):
             self.fill_from_file()
@@ -22,32 +27,31 @@ class Store:
         self.save_to_file()
 
     def fill_from_file(self):
-        with open('data/systems.json', 'r') as f:
-            self.systems = [System(store = self, data=data) for data in json.load(f)]
-        with open('data/ships.json', 'r') as f:
-            self.ships = [Ship(store = self, data=data) for data in json.load(f)]
-        with open('data/locations.json', 'r') as f:
-            self.locations = [Location(store = self, data=data) for data in json.load(f)]
-        with open('data/markets.json', 'r') as f:
-            self.markets = [Market(store = self, data=data) for data in json.load(f)]
-        with open('data/structures.json', 'r') as f:
-            self.structures = [Structure(store = self, data=data) for data in json.load(f)]
-        with open('data/flightplans.json', 'r') as f:
-            self.flightplans = [FlightPlan(store = self, data=data) for data in json.load(f)]
+        for key in self.__dict__.keys():
+            if exists('data/' + key + '.json'):
+                with open('data/' + key + '.json', 'r') as f:
+                    self.__dict__[key] = [globals()[key.capitalize()[:-1]](data = data, store = self) for data in json.load(f)]
+                    
+
 
     def save_to_file(self):
-        with open('data/systems.json', 'w') as f:
-            json.dump([system.my_data() for system in self.systems], f)
-        with open('data/ships.json', 'w') as f:
-            json.dump([ship.my_data() for ship in self.ships], f)
-        with open('data/locations.json', 'w') as f:
-            json.dump([location.my_data() for location in self.locations], f)
-        with open('data/markets.json', 'w') as f:
-            json.dump([market.my_data() for market in self.markets], f)
-        with open('data/structures.json', 'w') as f:
-            json.dump([structure.my_data() for structure in self.structures], f)
-        with open('data/flightplans.json', 'w') as f:
-            json.dump([flightplan.my_data() for flightplan in self.flightplans], f)
+        for key in self.__dict__.keys():
+            if exists('data/' + key + '.json'):
+                with open('data/' + key + '.json', 'w') as f:
+                    json.dump([value.my_data() for value in self.__dict__[key]], f, indent=4)
+
+        # with open('data/systems.json', 'w') as f:
+        #     json.dump([system.my_data() for system in self.systems], f, indent=4)
+        # with open('data/ships.json', 'w') as f:
+        #     json.dump([ship.my_data() for ship in self.ships], f, indent=4)
+        # with open('data/locations.json', 'w') as f:
+        #     json.dump([location.my_data() for location in self.locations], f, indent=4)
+        # with open('data/markets.json', 'w') as f:
+        #     json.dump([market.my_data() for market in self.markets], f, indent=4)
+        # with open('data/structures.json', 'w') as f:
+        #     json.dump([structure.my_data() for structure in self.structures], f, indent=4)
+        # with open('data/flightplans.json', 'w') as f:
+        #     json.dump([flightplan.my_data() for flightplan in self.flightplans], f, indent=4)
 
     def fill_from_api(self):
         for system_id in KNOWN_SYSTEMS:

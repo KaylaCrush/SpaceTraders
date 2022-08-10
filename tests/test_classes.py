@@ -36,6 +36,8 @@ def test_flightplan_from_api():
     ship = Ship(sample_ship['id'])
     destinations = ['OE-PM-TR', 'OE-PM']
     if ship.has_location():
+        if ship.get_fuel() < 2:
+            ship.purchace_good('FUEL', 2)
         if ship.location == destinations[0]:
             flightplan = FlightPlan(ship.id, destinations[1])
         else:
@@ -44,3 +46,9 @@ def test_flightplan_from_api():
 
 def test_flightplan_from_file():
     assert FlightPlan(data=sample_flightplan).id == sample_flightplan['id']
+
+
+def test_update_ship_from_api():
+    ship = Ship(sample_ship['id'])
+    ship.update_from_api()
+    assert ship.id == sample_ship['id']

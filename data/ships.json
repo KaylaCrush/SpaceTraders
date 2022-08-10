@@ -1,1 +1,45 @@
-[{"id": "cl55thau617774315s68iz3fpjj", "location": "OE-PM", "x": -19, "y": 3, "cargo": [{"good": "FUEL", "quantity": 1, "totalVolume": 1}], "spaceAvailable": 49, "type": "JW-MK-I", "class": "MK-I", "maxCargo": 50, "loadingSpeed": 25, "speed": 1, "manufacturer": "Jackshaw", "plating": 5, "weapons": 5}, {"id": "cl58tw4u525771615s6bnh9pips", "location": "OE-PM-TR", "x": -20, "y": 5, "cargo": [{"good": "METALS", "quantity": 55, "totalVolume": 55}, {"good": "FUEL", "quantity": 20, "totalVolume": 20}], "spaceAvailable": 25, "type": "GR-MK-I", "class": "MK-I", "maxCargo": 100, "loadingSpeed": 100, "speed": 1, "manufacturer": "Gravager", "plating": 10, "weapons": 5}]
+[
+    {
+        "id": "cl55thau617774315s68iz3fpjj",
+        "location": "OE-PM-TR",
+        "x": -20,
+        "y": 5,
+        "cargo": [],
+        "spaceAvailable": 50,
+        "type": "JW-MK-I",
+        "class": "MK-I",
+        "maxCargo": 50,
+        "loadingSpeed": 25,
+        "speed": 1,
+        "manufacturer": "Jackshaw",
+        "plating": 5,
+        "weapons": 5
+    },
+    {
+        "id": "cl58tw4u525771615s6bnh9pips",
+        "location": "OE-PM-TR",
+        "x": -20,
+        "y": 5,
+        "cargo": [
+            {
+                "good": "METALS",
+                "quantity": 55,
+                "totalVolume": 55
+            },
+            {
+                "good": "FUEL",
+                "quantity": 20,
+                "totalVolume": 20
+            }
+        ],
+        "spaceAvailable": 25,
+        "type": "GR-MK-I",
+        "class": "MK-I",
+        "maxCargo": 100,
+        "loadingSpeed": 100,
+        "speed": 1,
+        "manufacturer": "Gravager",
+        "plating": 10,
+        "weapons": 5
+    }
+]
