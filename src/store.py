@@ -54,6 +54,7 @@ class Store:
         #     json.dump([flightplan.my_data() for flightplan in self.flightplans], f, indent=4)
 
     def fill_from_api(self):
+        User(store = self)
         for system_id in KNOWN_SYSTEMS:
             System(system_id, store = self)
         for ship in get_ships():
