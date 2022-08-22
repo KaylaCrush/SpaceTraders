@@ -1,0 +1,6 @@
+<h1>Locations</h1>
+<ul>
+    {% for location in locations %}
+        <li>{{location.name}} <a href = "/locations/{{location.symbol}}">{{location.symbol}}</a></li>
+    {% endfor %}
+</ul>

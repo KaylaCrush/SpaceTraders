@@ -1,6 +1,6 @@
 import json
 from src.api import *
-from src.classes import *
+from src.models import *
 from os.path import exists
 
 KNOWN_SYSTEMS = ["OE"]
@@ -16,29 +16,49 @@ class Store:
         self.flightplans = []
         self.loans = []
         self.transactions = []
-        self.types = []
-        self.user = {}
+        self.types = {}
+        self.user = User(store = self)
 
         if load_from_file and exists('data/systems.json'):
-            self.fill_from_file()
+            self.update_from_file()
         else:
-            self.fill_from_api()
-
+            self.update_from_api()
         self.save_to_file()
 
-    def fill_from_file(self):
+    def get_ship(self, id):
+        return [ship for ship in self.ships if ship.id == id][0]
+
+    def get_location(self, id):
+        return [location for location in self.locations if location.symbol == id][0]
+    
+    def get_market(self, location_id):
+        if location_id in [market.location_id for market in self.markets]:
+            return [market for market in self.markets if market.location_id == location_id][0]
+        else:
+            return Market(location_id = location_id, store = self)
+
+    def update_from_file(self):
         for key in self.__dict__.keys():
             if exists('data/' + key + '.json'):
                 with open('data/' + key + '.json', 'r') as f:
-                    self.__dict__[key] = [globals()[key.capitalize()[:-1]](data = data, store = self) for data in json.load(f)]
+                    if key == 'user':
+                        self.user = User(store = self, data = json.load(f))
+                    elif key == 'types':
+                        self.types = json.load(f)
+                    else:
+                        self.__dict__[key] = [globals()[key.capitalize()[:-1]](data = data, store = self) for data in json.load(f)]
                     
-
 
     def save_to_file(self):
         for key in self.__dict__.keys():
             if exists('data/' + key + '.json'):
                 with open('data/' + key + '.json', 'w') as f:
-                    json.dump([value.my_data() for value in self.__dict__[key]], f, indent=4)
+                    if key == 'user':
+                        json.dump(self.user.my_data(), f, indent=4)
+                    elif key == 'types':
+                        json.dump(self.types, f, indent=4)
+                    else:
+                        json.dump([value.my_data() for value in self.__dict__[key]], f, indent=4)
 
         # with open('data/systems.json', 'w') as f:
         #     json.dump([system.my_data() for system in self.systems], f, indent=4)
@@ -53,7 +73,7 @@ class Store:
         # with open('data/flightplans.json', 'w') as f:
         #     json.dump([flightplan.my_data() for flightplan in self.flightplans], f, indent=4)
 
-    def fill_from_api(self):
+    def update_from_api(self):
         User(store = self)
         for system_id in KNOWN_SYSTEMS:
             System(system_id, store = self)
@@ -67,3 +87,7 @@ class Store:
                 Market(location_id = ship.location, store = self)
         for structure in get_my_structures():
             Structure(structure_id = structure['id'], store = self)
+        self.types['goods'] = get_available_goods()
+        self.types['loans'] = get_available_loans()
+        self.types['structures'] = get_available_structures()
+        self.types['ships'] = get_available_ships()

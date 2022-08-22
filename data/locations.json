@@ -10,7 +10,7 @@
             "METAL_ORES",
             "SOME_NATURAL_CHEMICALS"
         ],
-        "dockedShips": 838
+        "dockedShips": 842
     },
     {
         "symbol": "OE-PM-TR",
@@ -22,7 +22,7 @@
         "traits": [
             "NATURAL_CHEMICALS"
         ],
-        "dockedShips": 6897
+        "dockedShips": 6995
     },
     {
         "symbol": "OE-CR",
@@ -50,7 +50,7 @@
             "SOME_NATURAL_CHEMICALS",
             "SOME_RARE_METAL_ORES"
         ],
-        "dockedShips": 219
+        "dockedShips": 224
     },
     {
         "symbol": "OE-UC",
@@ -63,7 +63,7 @@
             "SOME_METAL_ORES",
             "ARABLE_LAND"
         ],
-        "dockedShips": 86
+        "dockedShips": 104
     },
     {
         "symbol": "OE-UC-AD",
@@ -91,7 +91,7 @@
             "NATURAL_CHEMICALS",
             "SOME_TECHNOLOGICAL_RUINS"
         ],
-        "dockedShips": 139
+        "dockedShips": 122
     },
     {
         "symbol": "OE-NY",
@@ -104,7 +104,7 @@
             "SOME_NATURAL_CHEMICALS",
             "RARE_METAL_ORES"
         ],
-        "dockedShips": 143
+        "dockedShips": 138
     },
     {
         "symbol": "OE-BO",
@@ -117,7 +117,7 @@
             "SOME_HELIUM_3",
             "TECHNOLOGICAL_RUINS"
         ],
-        "dockedShips": 97
+        "dockedShips": 105
     },
     {
         "symbol": "OE-W-XV",

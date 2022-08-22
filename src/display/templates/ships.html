@@ -1,0 +1,6 @@
+<h1>Ships</h1>
+<ul>
+    {% for ship in ships %}
+        <li>{{ship.name}} <a href = "/ships/{{ship.id}}">{{ship.id}}</a></li>
+    {% endfor %}
+</ul>

@@ -1,0 +1,26 @@
+<h1>Location Details: {{location.name}}</h1>
+<ul> 
+    <li>Symbol: {{location.symbol}}</li>
+    <li>Type: {{location.type.title()}}</li>
+    <li>Coordinates: {{location.x}}, {{location.y}}</li>
+    <li>Allows Construction: {{location.allowsConstruction}}</li>
+    <li>Docked Ships: {{location.dockedShips}}</li>
+    {% if location.traits[0] %}
+        <li>Traits:</li>
+            {% for trait in location.traits %}
+            &emsp;{{" ".join(trait.split('_')).title()}}<br>
+            {% endfor %}
+    {% endif %}
+
+    {% if location.has_market() %}
+        <br><br>Latest Market Data:<br><br>
+        <ul></ul>
+            {% for good in location.get_market()['marketplace'] %}
+            <li>&emsp;{{" ".join(good['symbol'].split('_')).title()}} ({{good['volumePerUnit']}} m² each)</li>
+            &emsp;Purchase Price: {{good['purchasePricePerUnit']}}, {{good['quantityAvailable']}} available<br>
+            &emsp;Sell Price: {{good['sellPricePerUnit']}}<br><br>
+            {% endfor %}
+        </ul>
+    {% endif %}
+
+    </ul>

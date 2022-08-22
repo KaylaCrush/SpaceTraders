@@ -1,0 +1,18 @@
+<h1>Ship Details: {{ship.name}}</h1>
+<ul> 
+    <li>Ship ID: {{ship.id}}</li>
+    <li>Location: <a href ="/locations/{{ship.location}}">{{ship.location}}</a> {{ship.x}}, {{ship.y}}</li>
+    <li>Cargo:
+        {% for good in ship.cargo %}
+        <br>&emsp;{{good['good'].title()}}: {{good['quantity']}}
+        {% endfor %}
+    </li>
+    <li>Available Space: {{ship.spaceAvailable}}</li>
+    <br>
+    {{ship.name}} specs:
+    <li>Max Cargo:     {{ship.maxCargo}}</li>
+    <li>Loading Speed: {{ship.loadingSpeed}}</li>
+    <li>Speed:         {{ship.speed}}</li>
+    <li>Plating:       {{ship.plating}}</li>
+    <li>Weapons:       {{ship.weapons}}</li>
+</ul>

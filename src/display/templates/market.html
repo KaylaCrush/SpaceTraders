@@ -1,0 +1,9 @@
+<h1>{{market['location_id']}} Market</h1>
+<p>Date: {{market['date']}}</p>
+<ul>
+    {% for good in market['marketplace'] %}
+    <li>&emsp;{{" ".join(good['symbol'].split('_')).title()}} ({{good['volumePerUnit']}} m² each)</li>
+    &emsp;Purchase Price: {{good['purchasePricePerUnit']}}, {{good['quantityAvailable']}} available<br>
+    &emsp;Sell Price: {{good['sellPricePerUnit']}}<br><br>
+    {% endfor %}
+</ul>

@@ -1,11 +1,17 @@
 [
     {
         "id": "cl55thau617774315s68iz3fpjj",
-        "location": "OE-PM-TR",
-        "x": -20,
-        "y": 5,
-        "cargo": [],
-        "spaceAvailable": 50,
+        "location": "OE-PM",
+        "x": -19,
+        "y": 3,
+        "cargo": [
+            {
+                "good": "FUEL",
+                "quantity": 1,
+                "totalVolume": 1
+            }
+        ],
+        "spaceAvailable": 49,
         "type": "JW-MK-I",
         "class": "MK-I",
         "maxCargo": 50,

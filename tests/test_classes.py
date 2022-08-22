@@ -1,4 +1,4 @@
-from src.classes import *
+from src.models import *
 from tests.test_data import *
 
 def test_ship_from_api():
