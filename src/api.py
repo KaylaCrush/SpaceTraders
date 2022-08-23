@@ -1,8 +1,6 @@
 import time
 import requests
-
-USERNAME = 'crushbone'
-TOKEN    = 'e5cafd30-73e6-4d85-bd1d-32c1bbc6bace'
+from settings import TOKEN
 
 base_url      = 'https://api.spacetraders.io'
 status_url    = f'{base_url}/game/status'
