@@ -4,4 +4,4 @@ from src.models import *
 from src.display.flaskinterface import app
 
 store = Store()
-#app.run(debug=True)
+app.run(debug=True)

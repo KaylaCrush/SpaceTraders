@@ -1,0 +1,4 @@
+<h1>{{user['username']}} User Info Page</h1>
+{% for key, value in user.my_data().items() %}
+<p>{{key}}: {{value}}</p>
+{% endfor %}

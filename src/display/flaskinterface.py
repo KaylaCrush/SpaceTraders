@@ -31,3 +31,13 @@ def market(symbol):
 @app.route('/user')
 def user():
     return render_template('user.html', user = store.user)
+
+@app.route('/shipyards')
+def shipyards():
+    return render_template('shipyards.html', shipyards = store.types['shipyards'])
+
+@app.route('/locations/<symbol>/shipyard/<ship_type>')
+def purchace_ship(symbol, ship_type):
+    response = buy_ship(symbol, ship_type)
+    Ship(store = store, data = response['ship'])
+    return render_template('buy_ship.html', response = response)

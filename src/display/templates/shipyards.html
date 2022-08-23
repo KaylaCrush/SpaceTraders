@@ -1,0 +1,17 @@
+<h1>Shipyards</h1> 
+{% for shipyard in shipyards %}
+{% for ship in shipyard %}
+    <br>
+    {% for key, value in ship.items() %}
+        {% if key == 'purchaseLocations' %}
+        <li>Purchace Locations:</li>
+            {% for location in value %}
+                <p>{{location}} <a href = "/locations/{{location['location']}}/shipyard/{{ship['type']}}"">Buy</a></p>
+            {% endfor %}
+        {% else %}
+            <li>{{key}}: {{value}}</li>
+        {% endif %}
+    {% endfor %}
+    <br>
+{% endfor %}
+{% endfor %}

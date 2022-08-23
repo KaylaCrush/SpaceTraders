@@ -17,7 +17,7 @@ class Store:
         self.loans = []
         self.transactions = []
         self.types = {}
-        self.user = User(store = self)
+        self.user = None
 
         if load_from_file and exists('data/systems.json'):
             self.update_from_file()
@@ -60,21 +60,9 @@ class Store:
                     else:
                         json.dump([value.my_data() for value in self.__dict__[key]], f, indent=4)
 
-        # with open('data/systems.json', 'w') as f:
-        #     json.dump([system.my_data() for system in self.systems], f, indent=4)
-        # with open('data/ships.json', 'w') as f:
-        #     json.dump([ship.my_data() for ship in self.ships], f, indent=4)
-        # with open('data/locations.json', 'w') as f:
-        #     json.dump([location.my_data() for location in self.locations], f, indent=4)
-        # with open('data/markets.json', 'w') as f:
-        #     json.dump([market.my_data() for market in self.markets], f, indent=4)
-        # with open('data/structures.json', 'w') as f:
-        #     json.dump([structure.my_data() for structure in self.structures], f, indent=4)
-        # with open('data/flightplans.json', 'w') as f:
-        #     json.dump([flightplan.my_data() for flightplan in self.flightplans], f, indent=4)
 
     def update_from_api(self):
-        User(store = self)
+        self.user = User(store = self)
         for system_id in KNOWN_SYSTEMS:
             System(system_id, store = self)
         for ship in get_ships():
@@ -87,7 +75,11 @@ class Store:
                 Market(location_id = ship.location, store = self)
         for structure in get_my_structures():
             Structure(structure_id = structure['id'], store = self)
+
         self.types['goods'] = get_available_goods()
         self.types['loans'] = get_available_loans()
         self.types['structures'] = get_available_structures()
         self.types['ships'] = get_available_ships()
+        self.types['shipyards'] = []
+        for system_id in KNOWN_SYSTEMS:
+            self.types['shipyards'].append(get_system_ship_listings(system_id))

@@ -525,5 +525,219 @@
             "plating": 20,
             "weapons": 5
         }
+    ],
+    "shipyards": [
+        [
+            {
+                "type": "JW-MK-I",
+                "class": "MK-I",
+                "maxCargo": 50,
+                "loadingSpeed": 25,
+                "speed": 1,
+                "manufacturer": "Jackshaw",
+                "plating": 5,
+                "weapons": 5,
+                "purchaseLocations": [
+                    {
+                        "system": "OE",
+                        "location": "OE-PM-TR",
+                        "price": 21125
+                    }
+                ]
+            },
+            {
+                "type": "JW-MK-II",
+                "class": "MK-II",
+                "maxCargo": 100,
+                "loadingSpeed": 25,
+                "speed": 2,
+                "manufacturer": "Jackshaw",
+                "plating": 10,
+                "weapons": 10,
+                "purchaseLocations": [
+                    {
+                        "system": "OE",
+                        "location": "OE-PM-TR",
+                        "price": 83300
+                    }
+                ]
+            },
+            {
+                "type": "GR-MK-I",
+                "class": "MK-I",
+                "maxCargo": 100,
+                "loadingSpeed": 100,
+                "speed": 1,
+                "manufacturer": "Gravager",
+                "plating": 10,
+                "weapons": 5,
+                "purchaseLocations": [
+                    {
+                        "system": "OE",
+                        "location": "OE-PM-TR",
+                        "price": 42650
+                    }
+                ]
+            },
+            {
+                "type": "ZA-MK-II",
+                "class": "MK-II",
+                "maxCargo": 100,
+                "loadingSpeed": 100,
+                "speed": 2,
+                "manufacturer": "Zetra",
+                "plating": 5,
+                "weapons": 5,
+                "purchaseLocations": [
+                    {
+                        "system": "OE",
+                        "location": "OE-PM-TR",
+                        "price": 72700
+                    },
+                    {
+                        "system": "OE",
+                        "location": "OE-UC-OB",
+                        "price": 72700
+                    }
+                ]
+            },
+            {
+                "type": "ZA-MK-III",
+                "class": "MK-III",
+                "maxCargo": 300,
+                "loadingSpeed": 100,
+                "speed": 2,
+                "manufacturer": "Zetra",
+                "plating": 10,
+                "weapons": 10,
+                "purchaseLocations": [
+                    {
+                        "system": "OE",
+                        "location": "OE-PM-TR",
+                        "price": 213900
+                    },
+                    {
+                        "system": "OE",
+                        "location": "OE-UC-OB",
+                        "price": 213900
+                    }
+                ]
+            },
+            {
+                "type": "EM-MK-I",
+                "class": "MK-I",
+                "maxCargo": 50,
+                "loadingSpeed": 25,
+                "speed": 2,
+                "manufacturer": "Electrum",
+                "plating": 5,
+                "weapons": 10,
+                "purchaseLocations": [
+                    {
+                        "system": "OE",
+                        "location": "OE-PM-TR",
+                        "price": 37750
+                    }
+                ]
+            },
+            {
+                "type": "HM-MK-I",
+                "class": "MK-I",
+                "maxCargo": 50,
+                "loadingSpeed": 25,
+                "speed": 3,
+                "manufacturer": "Hermes",
+                "plating": 20,
+                "weapons": 5,
+                "purchaseLocations": [
+                    {
+                        "system": "OE",
+                        "location": "OE-PM-TR",
+                        "price": 57525
+                    }
+                ]
+            },
+            {
+                "type": "GR-MK-II",
+                "class": "MK-II",
+                "maxCargo": 300,
+                "loadingSpeed": 500,
+                "speed": 1,
+                "manufacturer": "Gravager",
+                "plating": 10,
+                "weapons": 5,
+                "purchaseLocations": [
+                    {
+                        "system": "OE",
+                        "location": "OE-UC-AD",
+                        "price": 125550
+                    },
+                    {
+                        "system": "OE",
+                        "location": "OE-NY",
+                        "price": 125550
+                    }
+                ]
+            },
+            {
+                "type": "GR-MK-III",
+                "class": "MK-III",
+                "maxCargo": 500,
+                "loadingSpeed": 500,
+                "speed": 1,
+                "manufacturer": "Gravager",
+                "plating": 10,
+                "weapons": 10,
+                "purchaseLocations": [
+                    {
+                        "system": "OE",
+                        "location": "OE-UC-AD",
+                        "price": 203210
+                    },
+                    {
+                        "system": "OE",
+                        "location": "OE-NY",
+                        "price": 203210
+                    }
+                ]
+            },
+            {
+                "type": "HM-MK-III",
+                "class": "MK-III",
+                "maxCargo": 300,
+                "loadingSpeed": 100,
+                "speed": 4,
+                "manufacturer": "Hermes",
+                "plating": 20,
+                "weapons": 5,
+                "purchaseLocations": [
+                    {
+                        "system": "OE",
+                        "location": "OE-UC-AD",
+                        "price": 445200
+                    }
+                ]
+            },
+            {
+                "type": "TD-MK-I",
+                "class": "MK-I",
+                "maxCargo": 3000,
+                "loadingSpeed": 1000,
+                "speed": 2,
+                "manufacturer": "Tiddalik",
+                "plating": 10,
+                "weapons": 5,
+                "restrictedGoods": [
+                    "FUEL"
+                ],
+                "purchaseLocations": [
+                    {
+                        "system": "OE",
+                        "location": "OE-UC-AD",
+                        "price": 473600
+                    }
+                ]
+            }
+        ]
     ]
 }

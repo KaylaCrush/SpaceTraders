@@ -22,7 +22,7 @@
         "traits": [
             "NATURAL_CHEMICALS"
         ],
-        "dockedShips": 6995
+        "dockedShips": 6996
     },
     {
         "symbol": "OE-CR",
@@ -63,7 +63,7 @@
             "SOME_METAL_ORES",
             "ARABLE_LAND"
         ],
-        "dockedShips": 104
+        "dockedShips": 87
     },
     {
         "symbol": "OE-UC-AD",
@@ -117,7 +117,7 @@
             "SOME_HELIUM_3",
             "TECHNOLOGICAL_RUINS"
         ],
-        "dockedShips": 105
+        "dockedShips": 122
     },
     {
         "symbol": "OE-W-XV",

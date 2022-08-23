@@ -47,5 +47,21 @@
         "manufacturer": "Gravager",
         "plating": 10,
         "weapons": 5
+    },
+    {
+        "id": "cl75ez4ho5338515s62ucvfg6g",
+        "location": "OE-PM-TR",
+        "x": -20,
+        "y": 5,
+        "cargo": [],
+        "spaceAvailable": 50,
+        "type": "JW-MK-I",
+        "class": "MK-I",
+        "maxCargo": 50,
+        "loadingSpeed": 25,
+        "speed": 1,
+        "manufacturer": "Jackshaw",
+        "plating": 5,
+        "weapons": 5
     }
 ]
