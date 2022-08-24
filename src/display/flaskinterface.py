@@ -1,4 +1,4 @@
-from flask import Flask, render_template
+from flask import Flask, render_template, send_from_directory
 from src.store import *
 app = Flask(__name__)
 from markupsafe import escape
@@ -41,3 +41,9 @@ def purchace_ship(symbol, ship_type):
     response = buy_ship(symbol, ship_type)
     Ship(store = store, data = response['ship'])
     return render_template('buy_ship.html', response = response)
+
+# @app.route('/images/<image_path>')
+# def image(image_path):
+#         return send_from_directory(
+#         app.config['IMAGE_FOLDER'], image_path, as_attachment=True
+#     )

@@ -1,5 +1,6 @@
 from src.models.generic import Generic
 from src.api import *
+from settings import USERNAME
 
 class User():
     def __init__(self, data = None, username = USERNAME, store = None):
