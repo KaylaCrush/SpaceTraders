@@ -88,3 +88,25 @@ class Waypoint():
         self.location_id = location_id
         self.buy = buy if buy else []
         self.sell = sell if sell else []
+
+# ship = Ship()
+# ship.move(Navigator.find_next_location(ship))
+
+# # alternative
+
+# Navigator.move(ship)
+
+# class Navigator:
+#     def move(ship):
+#         # v1
+#         PriceAnalyzer.get_most_profitable_location(ship)
+
+#         # ML version
+#         optimal_location = self.ml_model.generate_profit_map().get_best_location(ship)
+#         return optimal_location
+
+# Ship => Navigator
+
+# ship.move(Navigator.find_next_location(ship))
+
+# Ship <=> Navigator
