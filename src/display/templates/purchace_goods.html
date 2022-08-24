@@ -1,0 +1,9 @@
+<h1>Good Purchace Info:</h1>
+{% if response %}
+    <p>You have {{response['credits']}} credits remaining.</p>
+    {% for key, value in response['order'].items() %}
+        <p>{{key}}: {{value}}</p>
+    {% endfor %}
+
+{% endif %}
+

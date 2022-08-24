@@ -63,5 +63,167 @@
         "manufacturer": "Jackshaw",
         "plating": 5,
         "weapons": 5
+    },
+    {
+        "id": "cl76us2fm10927715s6ub7uvwyc",
+        "location": "OE-PM-TR",
+        "x": -20,
+        "y": 5,
+        "cargo": [],
+        "spaceAvailable": 50,
+        "type": "JW-MK-I",
+        "class": "MK-I",
+        "maxCargo": 50,
+        "loadingSpeed": 25,
+        "speed": 1,
+        "manufacturer": "Jackshaw",
+        "plating": 5,
+        "weapons": 5
+    },
+    {
+        "id": "cl76wrlib14316315s6o4ky99zc",
+        "location": "OE-KO",
+        "x": -49,
+        "y": 1,
+        "cargo": [
+            {
+                "good": "FUEL",
+                "quantity": 5,
+                "totalVolume": 5
+            }
+        ],
+        "spaceAvailable": 45,
+        "type": "JW-MK-I",
+        "class": "MK-I",
+        "maxCargo": 50,
+        "loadingSpeed": 25,
+        "speed": 1,
+        "manufacturer": "Jackshaw",
+        "plating": 5,
+        "weapons": 5
+    },
+    {
+        "id": "cl76wrn7q14321915s6x5abcwpq",
+        "location": "OE-UC",
+        "x": -17,
+        "y": -72,
+        "cargo": [
+            {
+                "good": "FUEL",
+                "quantity": 4,
+                "totalVolume": 4
+            }
+        ],
+        "spaceAvailable": 46,
+        "type": "JW-MK-I",
+        "class": "MK-I",
+        "maxCargo": 50,
+        "loadingSpeed": 25,
+        "speed": 1,
+        "manufacturer": "Jackshaw",
+        "plating": 5,
+        "weapons": 5
+    },
+    {
+        "id": "cl76wroc414327215s6cnyxuhdy",
+        "location": "OE-UC-AD",
+        "x": -15,
+        "y": -73,
+        "cargo": [],
+        "spaceAvailable": 50,
+        "type": "JW-MK-I",
+        "class": "MK-I",
+        "maxCargo": 50,
+        "loadingSpeed": 25,
+        "speed": 1,
+        "manufacturer": "Jackshaw",
+        "plating": 5,
+        "weapons": 5
+    },
+    {
+        "id": "cl76wriz514309015s6z1gidgo1",
+        "location": "OE-CR",
+        "x": 4,
+        "y": -13,
+        "cargo": [
+            {
+                "good": "FUEL",
+                "quantity": 5,
+                "totalVolume": 5
+            }
+        ],
+        "spaceAvailable": 45,
+        "type": "JW-MK-I",
+        "class": "MK-I",
+        "maxCargo": 50,
+        "loadingSpeed": 25,
+        "speed": 1,
+        "manufacturer": "Jackshaw",
+        "plating": 5,
+        "weapons": 5
+    },
+    {
+        "id": "cl76wzomc14853915s6y4kr950p",
+        "location": "OE-UC-OB",
+        "x": -17,
+        "y": -74,
+        "cargo": [],
+        "spaceAvailable": 50,
+        "type": "JW-MK-I",
+        "class": "MK-I",
+        "maxCargo": 50,
+        "loadingSpeed": 25,
+        "speed": 1,
+        "manufacturer": "Jackshaw",
+        "plating": 5,
+        "weapons": 5
+    },
+    {
+        "id": "cl76x141q14975215s6c8nyud8p",
+        "location": "OE-NY",
+        "x": 43,
+        "y": -46,
+        "cargo": [],
+        "spaceAvailable": 50,
+        "type": "JW-MK-I",
+        "class": "MK-I",
+        "maxCargo": 50,
+        "loadingSpeed": 25,
+        "speed": 1,
+        "manufacturer": "Jackshaw",
+        "plating": 5,
+        "weapons": 5
+    },
+    {
+        "id": "cl76x29fs15047815s6ecokbtqe",
+        "location": "OE-BO",
+        "x": -59,
+        "y": 60,
+        "cargo": [],
+        "spaceAvailable": 50,
+        "type": "JW-MK-I",
+        "class": "MK-I",
+        "maxCargo": 50,
+        "loadingSpeed": 25,
+        "speed": 1,
+        "manufacturer": "Jackshaw",
+        "plating": 5,
+        "weapons": 5
+    },
+    {
+        "id": "cl76x2amk15058215s67ydmvvm2",
+        "location": "OE-W-XV",
+        "x": 5,
+        "y": -101,
+        "cargo": [],
+        "spaceAvailable": 50,
+        "type": "JW-MK-I",
+        "class": "MK-I",
+        "maxCargo": 50,
+        "loadingSpeed": 25,
+        "speed": 1,
+        "manufacturer": "Jackshaw",
+        "plating": 5,
+        "weapons": 5
     }
 ]

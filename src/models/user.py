@@ -1,5 +1,5 @@
 from src.models.generic import Generic
-from src.api import *
+from src.api import get_my_status
 from settings import USERNAME
 
 class User():

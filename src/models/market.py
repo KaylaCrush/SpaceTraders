@@ -1,6 +1,6 @@
 from src.models.generic import Generic
 import datetime
-from src.api import *
+from src.api import get_market_data
 
 
 class Market(Generic):

@@ -1,7 +1,13 @@
-from flask import Flask, render_template, send_from_directory
-from src.store import *
+from flask import Flask, render_template
+
+from src.display.foliumstarmap import StarMap
+import folium
+from src.store import Store
+from src.models import Ship
+import src.api as api
+
+
 app = Flask(__name__)
-from markupsafe import escape
 store = Store()
 
 @app.route('/')
@@ -38,12 +44,18 @@ def shipyards():
 
 @app.route('/locations/<symbol>/shipyard/<ship_type>')
 def purchace_ship(symbol, ship_type):
-    response = buy_ship(symbol, ship_type)
+    response = api.buy_ship(symbol, ship_type)
     Ship(store = store, data = response['ship'])
     return render_template('buy_ship.html', response = response)
 
-# @app.route('/images/<image_path>')
-# def image(image_path):
-#         return send_from_directory(
-#         app.config['IMAGE_FOLDER'], image_path, as_attachment=True
-#     )
+@app.route('/ships/<ship_id>/<good>/<quantity>')
+def purchace_good(ship_id, good, quantity):
+    response = api.purchace_goods(ship_id, good, quantity)
+    return render_template('purchace_goods.html', response = response)
+
+@app.route('/starmap')
+def starmap():
+    stars = StarMap()
+    start_coords = (46.9540700, 142.7360300)
+    folium_map = folium.Map(location=start_coords, zoom_start=14)
+    return folium_map._repr_html_()

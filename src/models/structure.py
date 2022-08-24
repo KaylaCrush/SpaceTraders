@@ -1,5 +1,5 @@
 from src.models.generic import Generic
-from src.api import *
+from src.api import get_structure_data
 
 class Structure(Generic):
     def __init__(self, structure_id = None, data = None, store = None):

@@ -1,5 +1,4 @@
 import json
-from src.api import *
 from src.models import *
 from os.path import exists
 

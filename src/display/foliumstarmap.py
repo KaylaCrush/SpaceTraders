@@ -1,14 +1,15 @@
 from branca.element import Figure
 import folium
+from src.store import Store
 
 class StarMap():
-  def __init__(self, starchart):
+  def __init__(self, store):
     self.starfield_url="http://paulbourke.net/miscellaneous/astronomy/8192x4096.png"
     self.figure_size=800
     self.icon_ids = {'PLANET':'fa-globe', 'MOON':'fa-moon-o', 'ASTEROID':'fa-cog', 'GAS_GIANT':'fa-circle-o', 'WORMHOLE':'fa-recycle'}
     self.icon_colors = {'PLANET':'lightblue', 'MOON':'beige', 'ASTEROID':'gray', 'GAS_GIANT':'lightgreen', 'WORMHOLE':'pink'}
   
-    self.starchart = starchart
+    self.store = store
    
     self.oas = self.getOffsetAndScale()
     self.fig = Figure(width=self.figure_size,height=self.figure_size)

@@ -3,7 +3,7 @@ from src.models.generic import Generic
 from src.models.flightplan import FlightPlan
 from src.models.transaction import Transaction
 from math import hypot
-from src.api import *
+from src.api import get_ship_data
 
 class Ship(Generic):
     def __init__(self, ship_id:str = None, data:dict = None, store = None):
