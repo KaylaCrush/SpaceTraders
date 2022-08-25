@@ -2,13 +2,8 @@ import src.api as api
 
 def build_from_record(Class, record):
     if not record: return None
-    attr = dict(zip(Class.columns, record))
-    obj = Class()
-    obj.__dict__ = attr
+    obj = Class(**record)
     return obj
-
-def build_from_api(Class):
-    attr = api_function()
 
 def build_from_records(Class, records):
    return [build_from_record(Class, record) for record in records]

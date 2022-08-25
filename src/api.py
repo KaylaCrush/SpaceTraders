@@ -46,7 +46,7 @@ def make_request(url, params={}, req_type='GET', delay=0.0):
 def get_my_status(params={}):
   return make_request(myInfo_url, params=params).json()['user']
 
-def get_money():
+def get_my_money():
   return make_request(myInfo_url).json()['user']['credits']
 
 # FLIGHTPLAN
@@ -56,27 +56,17 @@ def get_flightplan(flightPlan_id, params={}):
 def make_flightplan(ship_id, destination):
   return make_request(f'{flightplan_url}', params={'shipId':ship_id, 'destination':destination}, req_type="POST").json()['flightPlan']
 
-# LOANS
-def get_loans():
-  return make_request(url= f'{loans_url}').json()['loans']
-
-def pay_loan(loan_id):
-  return make_request(f'{loans_url}/{loan_id}', req_type="PUT").json()
-
-def take_loan(loan_type):
-  return make_request(f'{loans_url}', params={'type':loan_type}, req_type="POST").json()
-
 # LOCATIONS
 def get_location_data(location_id, params={}):
   return make_request(f'{location_url}/{location_id}', params=params).json()['location']
 
 def get_market_data(location_id, params={}):
-  return make_request(f'{location_url}/{location_id}/marketplace', params=params).json()
+  return make_request(f'{location_url}/{location_id}/marketplace', params=params).json()['marketplace']
 
-def get_ships(location_id, params={}):
+def get_location_ships(location_id, params={}):
   return make_request(f'{location_url}/{location_id}/ships', params=params).json()['ships']
 
-def get_structures(location_id, params={}):
+def get_location_structures(location_id, params={}):
   return make_request(f'{location_url}/{location_id}/structures', params=params).json()['structures']
 
 # COMMERCE
@@ -86,14 +76,11 @@ def purchace_goods(ship_id, good, quantity):
 def sell_goods(ship_id, good, quantity):
   return make_request(f'{sell_url}', param={'shipId':ship_id,'quantity':quantity,'good':good}, req_type='POST').json()
 
-def fuel_ship(ship_id,fuel_amount): #
-  return purchace_goods(f'{ship_id}', 'FUEL', fuel_amount).json()
-
 # SHIPS
 def buy_ship(location, type):
   return make_request(f'{myShips_url}',params = {'location': location, 'type': type}, req_type = "POST").json()
 
-def get_ships(params={}):
+def get_my_ships(params={}):
   return make_request(myShips_url, params=params).json()['ships']
 
 def get_ship_data(ship_id, params={}):
@@ -111,9 +98,6 @@ def transfer_ship_cargo(from_ship_id, to_ship_id, good, quantity):
 #STRUCTURES
 def get_structure_data(structure_id):
   return make_request(f'{struct_url}/{structure_id}').json()['structure']
-
-def get_my_structure_data(structure_id):
-  return make_request(f'{my_struct_url}/{structure_id}').json()['structure']
 
 def get_my_structures():
   return make_request(f'{my_struct_url}').json()['structures']
@@ -147,16 +131,16 @@ def get_system_data(system_id, params={}):
   return make_request(f'{system_url}/{system_id}', params = params).json()['system']
 
 #TYPES
-def get_available_goods(params={}):
+def get_goods_types(params={}):
   return make_request(f'{types_url}/goods', params=params).json()['goods']
 
-def get_available_loans(params={}):
+def get_loans_types(params={}):
   return make_request(f'{types_url}/loans').json()['loans']
 
-def get_available_structures(params={}):
+def get_structures_types(params={}):
   return make_request(f'{types_url}/structures').json()['structures']
 
-def get_available_ships(params={}):
+def get_ships_types(params={}):
   return make_request(f'{types_url}/ships').json()['ships']
 
 #USERS

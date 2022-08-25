@@ -5,4 +5,4 @@ class Cargo(Generic):
     columns = ['ship_id', 'good', 'quantity']
 
     def __init__(self, **kwargs):
-            super.__init__(**kwargs)
+            super().__init__(**kwargs)

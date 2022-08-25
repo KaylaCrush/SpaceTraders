@@ -4,4 +4,4 @@ class LocationTrait(Generic):
     columns = ['location_symbol', 'trait']
 
     def __init__(self, **kwargs):
-        super.__init__(**kwargs)
+        super().__init__(**kwargs)
