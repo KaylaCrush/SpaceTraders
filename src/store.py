@@ -1,8 +1,9 @@
 import json
-from src.models import *
+from src.models import Market, User, System, Ship, Location, Structure
 from os.path import exists
+import src.api as api
 
-KNOWN_SYSTEMS = ["OE"]
+KNOWN_SYSTEMS = ['OE', 'XV', 'ZY1', 'NA7']
 
 class Store:
     def __init__(self, load_from_file = True):
@@ -64,21 +65,21 @@ class Store:
         self.user = User(store = self)
         for system_id in KNOWN_SYSTEMS:
             System(system_id, store = self)
-        for ship in get_ships():
+        for ship in api.get_ships():
             Ship(ship_id = ship['id'], store = self)
         for system_id in KNOWN_SYSTEMS:
-            for location in get_system_locations(system_id):
+            for location in api.get_system_locations(system_id):
                 Location(location_id = location['symbol'], store = self)
         for ship in self.ships:
             if ship.has_location():
                 Market(location_id = ship.location, store = self)
-        for structure in get_my_structures():
+        for structure in api.get_my_structures():
             Structure(structure_id = structure['id'], store = self)
 
-        self.types['goods'] = get_available_goods()
-        self.types['loans'] = get_available_loans()
-        self.types['structures'] = get_available_structures()
-        self.types['ships'] = get_available_ships()
+        self.types['goods'] = api.get_available_goods()
+        self.types['loans'] = api.get_available_loans()
+        self.types['structures'] = api.get_available_structures()
+        self.types['ships'] = api.get_available_ships()
         self.types['shipyards'] = []
         for system_id in KNOWN_SYSTEMS:
-            self.types['shipyards'].append(get_system_ship_listings(system_id))
+            self.types['shipyards'].append(api.get_system_ship_listings(system_id))
