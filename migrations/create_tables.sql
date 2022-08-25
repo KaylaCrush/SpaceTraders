@@ -15,10 +15,10 @@ CREATE TABLE IF NOT EXISTS ships (
 );
 
 CREATE TABLE IF NOT EXISTS cargo (
-  id SERIAL PRIMARY KEY,
   ship_id VARCHAR(255),
   good VARCHAR(255),
-  quantity INTEGER
+  quantity INTEGER,
+  PRIMARY KEY (ship_id, good)
 );
 
 CREATE TABLE IF NOT EXISTS locations (
@@ -31,9 +31,9 @@ CREATE TABLE IF NOT EXISTS locations (
 );
 
 CREATE TABLE IF NOT EXISTS location_traits (
-  id SERIAL PRIMARY KEY,
   location_symbol VARCHAR(255),
-  trait VARCHAR(255)
+  trait VARCHAR(255),
+  PRIMARY KEY (location_symbol, trait)
 );
 
 CREATE TABLE IF NOT EXISTS systems (
@@ -48,12 +48,12 @@ CREATE TABLE IF NOT EXISTS good_types (
 );
 
 CREATE TABLE IF NOT EXISTS ship_types (
-  type VARCHAR(255) PRIMARY KEY,
   class VARCHAR(255),
   manufacturer VARCHAR(255),
   maxCargo INTEGER,
   plating INTEGER,
   speed INTEGER,
+  type VARCHAR(255) PRIMARY KEY,
   weapons INTEGER
 );
 
