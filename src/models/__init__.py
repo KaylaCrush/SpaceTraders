@@ -1,3 +1,4 @@
+from src.models.generic import Generic
 from src.models.cargo import Cargo
 from src.models.good_type import GoodType
 from src.models.location_trait import LocationTrait

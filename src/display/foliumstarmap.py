@@ -1,6 +1,5 @@
 from branca.element import Figure
 import folium
-from src.store import Store
 
 class StarMap():
   def __init__(self, store):
