@@ -10,9 +10,11 @@ cursor = conn.cursor()
 
 
 for ship in api.get_my_ships():
-    if ship['cargo']:
-        orm.save(orm.build_from_record(Cargo, ship['cargo']), conn, cursor)
-        del ship['cargo']
+    cargo = ship.pop('cargo', None)
+    if cargo:
+        for item in cargo:
+            item['ship_id'] = ship['id']
+            orm.save(orm.build_from_record(Cargo, item), conn, cursor)
     orm.save(orm.build_from_record(Ship, ship), conn, cursor)
 for system in KNOWN_SYSTEMS:
     orm.save(orm.build_from_record(System, api.get_system_data(system)), conn, cursor)
