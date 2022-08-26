@@ -24,7 +24,7 @@ CREATE TABLE IF NOT EXISTS cargo (
 CREATE TABLE IF NOT EXISTS locations (
   symbol VARCHAR(255) PRIMARY KEY,
   type VARCHAR(255),
-  name VARCHAR(255) UNIQUE,
+  name VARCHAR(255),
   x INTEGER,
   y INTEGER,
   allowsConstruction BOOLEAN
