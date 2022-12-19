@@ -5,7 +5,7 @@ import psycopg2
 
 def get_db():
     if "db" not in g:
-        g.db = psycopg2.connect(user = 'geekc',
+        g.db = psycopg2.connect(user = 'postgres', password = 'postgres',
             dbname = current_app.config['DATABASE'])
     return g.db
 

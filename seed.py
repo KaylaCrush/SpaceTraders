@@ -8,16 +8,29 @@ from settings import KNOWN_SYSTEMS
 conn = psycopg2.connect(database = 'space_traders', user = 'geekc')
 cursor = conn.cursor()
 
+
 for ship in api.get_my_ships():
-    orm.save(orm.build_from_record(Ship, ship))
-
+    cargo = ship.pop('cargo', None)
+    if cargo:
+        for item in cargo:
+            item['ship_id'] = ship['id']
+            orm.save(orm.build_from_record(Cargo, item), conn, cursor)
+    orm.save(orm.build_from_record(Ship, ship), conn, cursor)
 for system in KNOWN_SYSTEMS:
-    orm.save(orm.build_from_record(System, api.get_system_data(system)))
-    for location in api.get_system_locations(system):
-        orm.save(orm.build_from_record(Location, location))
+    orm.save(orm.build_from_record(System, api.get_system_data(system)), conn, cursor)
 
-for good in api.get_goods_types():
-    orm.save(orm.build_from_record(GoodType, good))
-    
-for ship in api.get_ships_types():
-    orm.save(orm.build_from_record(ShipType, ship))
+
+
+
+# famiglia = Venue(foursquare_id = '1234', name = 'La Famiglia', price = 1,
+#         rating = 2, likes = 3, menu_url = 'lafamig.com')
+# mogador = Venue(foursquare_id = '5678', name = 'Cafe Mogador', 
+#         price = 3, rating = 4, likes = 15, menu_url = 'cafemogador.com')
+# save(famiglia, conn, cursor)
+# save(mogador, conn, cursor)
+
+# pizza = Category(name = 'Pizza')
+# italian = Category(name = 'Italian')
+
+# save(pizza, conn, cursor)
+# save(italian, conn, cursor)
