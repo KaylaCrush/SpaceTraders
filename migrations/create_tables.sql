@@ -1,59 +1,29 @@
 DROP TABLE IF EXISTS ships;
 DROP TABLE IF EXISTS cargo;
 DROP TABLE IF EXISTS locations;
-DROP TABLE IF EXISTS location_traits;
+DROP TABLE IF EXISTS markets;
+DROP TABLE IF EXISTS structures;
+DROP TABLE IF EXISTS flightplans;
 DROP TABLE IF EXISTS systems;
-DROP TABLE IF EXISTS ship_types;
-DROP TABLE IF EXISTS good_types;
+DROP TABLE IF EXISTS users;
 
 CREATE TABLE IF NOT EXISTS ships (
-  id VARCHAR(255) PRIMARY KEY,
-  location VARCHAR(255),
-  x INTEGER,
-  y INTEGER,
-  spaceAvailable INTEGER
+  id serial PRIMARY KEY,
+  foursquare_id VARCHAR(255) UNIQUE,
+  name VARCHAR(255) NOT NULL,
+  price INTEGER,
+  rating DECIMAL,
+  likes BIGINT,
+menu_url VARCHAR(255),
+  created_at TIMESTAMP DEFAULT CURRENT_TIMESTAMP
 );
 
-CREATE TABLE IF NOT EXISTS cargo (
-  id SERIAL PRIMARY KEY,
-  ship_id VARCHAR(255),
-  good VARCHAR(255),
-  quantity INTEGER
-);
+CREATE INDEX IF NOT EXISTS venues_price_index ON venues (price);
 
-CREATE TABLE IF NOT EXISTS locations (
-  symbol VARCHAR(255) PRIMARY KEY,
-  type VARCHAR(255),
-  name VARCHAR(255) UNIQUE,
-  x INTEGER,
-  y INTEGER,
-  allowsConstruction BOOLEAN
-);
 
-CREATE TABLE IF NOT EXISTS location_traits (
-  id SERIAL PRIMARY KEY,
-  location_symbol VARCHAR(255),
-  trait VARCHAR(255)
-);
-
-CREATE TABLE IF NOT EXISTS systems (
-  symbol VARCHAR(255) PRIMARY KEY,
+CREATE TABLE IF NOT EXISTS categories (
+  id serial PRIMARY KEY,
   name VARCHAR(255) UNIQUE
 );
 
-CREATE TABLE IF NOT EXISTS good_types (
-  symbol VARCHAR(255) PRIMARY KEY,
-  name VARCHAR(255) UNIQUE,
-  volumePerUnit INTEGER
-);
-
-CREATE TABLE IF NOT EXISTS ship_types (
-  type VARCHAR(255) PRIMARY KEY,
-  class VARCHAR(255),
-  manufacturer VARCHAR(255),
-  maxCargo INTEGER,
-  plating INTEGER,
-  speed INTEGER,
-  weapons INTEGER
-);
 
