@@ -18,6 +18,7 @@ flightplan_url= f'{my_url}/flight-plans'
 my_struct_url = f'{my_url}/structures'
 
 
+
 # ## =====API CALLS===== ##
 def make_request(url, params={}, req_type='GET', delay=0.0):
   time.sleep(delay)
