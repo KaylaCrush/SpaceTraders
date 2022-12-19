@@ -5,4 +5,3 @@ from src.models.location_trait import LocationTrait
 from src.models.location import Location
 from src.models.ship_type import ShipType
 from src.models.ship import Ship
-from src.models.system import System
