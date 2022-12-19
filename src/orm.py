@@ -1,14 +1,9 @@
-import src.api as api
-
 def build_from_record(Class, record):
     if not record: return None
     attr = dict(zip(Class.columns, record))
     obj = Class()
     obj.__dict__ = attr
     return obj
-
-def build_from_api(Class):
-    attr = api_function()
 
 def build_from_records(Class, records):
    return [build_from_record(Class, record) for record in records]
@@ -26,17 +21,16 @@ def find(Class, id, cursor):
     return build_from_record(Class, record)
 
 def values(obj):
-    obj_attrs = obj.__dict__
-    return [obj_attrs[attr] for attr in obj.columns if attr in obj_attrs.keys()]
+    venue_attrs = obj.__dict__
+    return [venue_attrs[attr] for attr in obj.columns if attr in venue_attrs.keys()]
 
 def keys(obj):
-    obj_attrs = obj.__dict__
-    selected = [attr for attr in obj.columns if attr in obj_attrs.keys()]
+    venue_attrs = obj.__dict__
+    selected = [attr for attr in obj.columns if attr in venue_attrs.keys()]
     return ', '.join(selected)
 
 def save(obj, conn, cursor):
     s_str = ', '.join(len(values(obj)) * ['%s'])
-    print(s_str)
-    # obj_str = f"""INSERT INTO {obj.__table__} ({keys(obj)}) VALUES ({s_str});"""
-    # cursor.execute(obj_str, list(values(obj)))
-    # conn.commit()
+    venue_str = f"""INSERT INTO {obj.__table__} ({keys(obj)}) VALUES ({s_str});"""
+    cursor.execute(venue_str, list(values(obj)))
+    conn.commit()

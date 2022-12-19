@@ -1,17 +1,10 @@
 import psycopg2
-import src.orm as orm
+from src.orm import *
 from src.db import *
 from src.models import Ship, ShipType, Cargo, GoodType, Location, LocationTrait
-import src.api as api
 
 conn = psycopg2.connect(database = 'space_traders', user = 'geekc')
 cursor = conn.cursor()
-
-
-for ship in api.get_ships():
-    orm.save(ship, conn, cursor)
-
-
 
 
 # famiglia = Venue(foursquare_id = '1234', name = 'La Famiglia', price = 1,
