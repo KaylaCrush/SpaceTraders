@@ -11,7 +11,7 @@ os.environ["REPLICATE_API_TOKEN"]="5ded05b00c15a89b3112489661b919975e59e8ae"
 
 
 def descriptive_ship_name(ship_type):
-  ships = get_ships_types()
+  ships = get_available_ships()
   ship = [ship for ship in ships if ship['type']==ship_type][0]
   shipstring = "a "
   match ship['class']:
